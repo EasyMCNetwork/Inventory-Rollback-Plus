@@ -159,7 +159,7 @@ public class ConfigData {
         setWebhookLink((String) getDefaultValue("discord.webhook", "link_hook"));
         setWebhookUser((String) getDefaultValue("discord.username", "InventoryRollBack"));
         setWebhookAvatar((String) getDefaultValue("discord.avatar", "https://www.spigotmc.org/data/resource_icons/85/85811.jpg"));
-        setWebhookDesc((String) getDefaultValue("discord.description", "**{staff}** performed a rollback on **{player}**\n\n**Data**: {date}\n**Ora**: {time}"));
+        setWebhookDesc((String) getDefaultValue("discord.description", "**{staff}** performed a rollback on **{player}**\n\n**Date**: {date}\n**Time**: {time}"));
         setWebhookThumbnail((String) getDefaultValue("discord.thumbnail", "https://crafthead.net/cube/{UUID}"));
         setWebhookTitle((String) getDefaultValue("discord.title", "Rollback performed"));
 

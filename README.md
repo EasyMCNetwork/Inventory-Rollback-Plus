@@ -77,5 +77,5 @@ discord:
   avatar: 'https://www.spigotmc.org/data/resource_icons/85/85811.jpg'
   thumbnail: 'https://crafthead.net/cube/{UUID}'
   title: 'Rollback performed'
-  description: '**{staff}** performed a rollback on **{player}**\n\n**Data**: {date}\n**Ora**: {time}'
+  description: '**{staff}** performed a rollback on **{player}**\n\n**Date**: {date}\n**Time**: {time}'
 ```
