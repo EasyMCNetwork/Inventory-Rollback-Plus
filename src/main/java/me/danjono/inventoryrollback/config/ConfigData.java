@@ -54,13 +54,13 @@ public class ConfigData {
     public enum SaveType {
         YAML("YAML"),
         MYSQL("MySQL");
-        
+
         private final String name;
 
         SaveType(String name) {
             this.name = name;
         }
-        
+
         public String getName() {
             return this.name;
         }
@@ -69,7 +69,7 @@ public class ConfigData {
     private static boolean pluginEnabled;
 
     private static SaveType saveType = SaveType.YAML;
-    private static File folderLocation = InventoryRollback.getInstance().getDataFolder();   
+    private static File folderLocation = InventoryRollback.getInstance().getDataFolder();
 
     private static boolean mysqlEnabled;
     private static String mysqlHost;
@@ -100,7 +100,15 @@ public class ConfigData {
     private static boolean bStatsEnabled;
     private static boolean debugEnabled;
 
-    public void setVariables() {		
+    private static boolean webhookEnabled;
+    private static String webhookLink;
+    private static String webhookUsername;
+    private static String webhookAvatar;
+    private static String webhookDesc;
+    private static String webhookThumbnail;
+    private static String webhookTitle;
+
+    public void setVariables() {
         setEnabled((boolean) getDefaultValue("enabled", true));
 
         String folder = (String) getDefaultValue("folder-location", "DEFAULT");
@@ -135,9 +143,9 @@ public class ConfigData {
         setBackupLinesVisible((int) getDefaultValue("backup-lines-visible", 1));
 
         setMaxSavesJoin((int) getDefaultValue("max-saves.join", 10));
-        setMaxSavesQuit((int) getDefaultValue("max-saves.quit", 10));	
+        setMaxSavesQuit((int) getDefaultValue("max-saves.quit", 10));
         setMaxSavesDeath((int) getDefaultValue("max-saves.death", 50));
-        setMaxSavesWorldChange((int) getDefaultValue("max-saves.world-change", 10));	
+        setMaxSavesWorldChange((int) getDefaultValue("max-saves.world-change", 10));
         setMaxSavesForce((int) getDefaultValue("max-saves.force", 10));
 
         setTimeZone((String) getDefaultValue("time-zone", "GMT"));
@@ -147,11 +155,19 @@ public class ConfigData {
         setbStatsEnabled((boolean) getDefaultValue("bStats", true));
         setDebugEnabled((boolean) getDefaultValue("debug", false));
 
+        setWebhookEnabled((boolean) getDefaultValue("discord.enabled", false));
+        setWebhookLink((String) getDefaultValue("discord.webhook", "link_hook"));
+        setWebhookUser((String) getDefaultValue("discord.username", "InventoryRollBack"));
+        setWebhookAvatar((String) getDefaultValue("discord.avatar", "https://www.spigotmc.org/data/resource_icons/85/85811.jpg"));
+        setWebhookDesc((String) getDefaultValue("discord.description", "**{staff}** performed a rollback on **{player}**\n\n**Data**: {date}\n**Ora**: {time}"));
+        setWebhookThumbnail((String) getDefaultValue("discord.thumbnail", "https://crafthead.net/cube/{UUID}"));
+        setWebhookTitle((String) getDefaultValue("discord.title", "Rollback performed"));
+
         if (saveChanges())
             saveConfig();
     }
 
-    public static void setEnabled(boolean enabled) {        
+    public static void setEnabled(boolean enabled) {
         pluginEnabled = enabled;
     }
 
@@ -275,6 +291,19 @@ public class ConfigData {
         debugEnabled = enabled;
     }
 
+    public static void setWebhookEnabled(boolean enabled){
+        webhookEnabled = enabled;
+    }
+
+    public static void setWebhookLink(String value){
+        webhookLink = value;
+    }
+    public static void setWebhookUser(String value) { webhookUsername = value; }
+    public static void setWebhookAvatar(String value) { webhookAvatar = value; }
+    public static void setWebhookDesc(String value) { webhookDesc = value; }
+    public static void setWebhookThumbnail(String value) { webhookThumbnail = value; }
+    public static void setWebhookTitle(String value) { webhookTitle = value; }
+
     public static boolean isEnabled() {
         return pluginEnabled;
     }
@@ -378,6 +407,15 @@ public class ConfigData {
     public static boolean isDebugEnabled() {
         return debugEnabled;
     }
+
+    public static boolean isWebhookEnabled() { return webhookEnabled; }
+    public static String getWebhookLink() { return webhookLink; }
+    public static String getWebhookUsername() { return webhookUsername; }
+    public static String getWebhookAvatar() { return webhookAvatar; }
+    public static String getWebhookDesc() { return webhookDesc; }
+    public static String getWebhookThumbnail() { return webhookThumbnail; }
+    public static String getWebhookTitle() { return webhookTitle; }
+
 
     private boolean saveChanges = false;
     public Object getDefaultValue(String path, Object defaultValue) {

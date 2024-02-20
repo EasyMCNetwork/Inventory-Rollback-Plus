@@ -62,3 +62,13 @@ bStats: true
 
 # Debug mode - Prints extra information to the console.
 debug: false
+
+# Discord webhook
+discord:
+  enabled: false
+  webhook: 'link_hook'
+  username: 'InventoryRollBack'
+  avatar: 'https://www.spigotmc.org/data/resource_icons/85/85811.jpg'
+  thumbnail: 'https://crafthead.net/cube/{UUID}'
+  title: 'Rollback performed'
+  description: '**{staff}** performed a rollback on **{player}**\n\n**Data**: {date}\n**Ora**: {time}'

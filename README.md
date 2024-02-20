@@ -64,3 +64,18 @@ You can change these values in the configuration file.
 
 ## Spigot Link
 [https://www.spigotmc.org/resources/85811/](https://www.spigotmc.org/resources/85811/)
+
+## SlimeBluKing's fork
+I simply added the integration for Discord Webhooks
+
+```yaml
+# Discord webhook
+discord:
+  enabled: false
+  webhook: 'link_hook'
+  username: 'InventoryRollBack'
+  avatar: 'https://www.spigotmc.org/data/resource_icons/85/85811.jpg'
+  thumbnail: 'https://crafthead.net/cube/{UUID}'
+  title: 'Rollback performed'
+  description: '**{staff}** performed a rollback on **{player}**\n\n**Data**: {date}\n**Ora**: {time}'
+```
